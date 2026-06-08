@@ -1,5 +1,11 @@
 # Detector de Queimadas com Dados de Satélite e Inteligência Artificial
 
+# Integrantes
+Victor Wittner - 98667
+Matheus Haruo - 97663
+João Saborido - 98184
+Pedro Guerra de Souza Freitas 99526
+
 ## 1. Contexto do problema
 
 Queimadas são eventos ambientais extremos que causam impactos sociais, econômicos e ambientais. Elas afetam a qualidade do ar, a biodiversidade, a agricultura, a saúde pública e o planejamento de ações de defesa civil.
