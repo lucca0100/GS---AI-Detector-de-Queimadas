@@ -1,6 +1,6 @@
 # Detector de Queimadas com Dados de Satélite e Inteligência Artificial
 
-# Integrantes
+## Integrantes
 Victor Wittner - 98667
 Matheus Haruo - 97663
 João Saborido - 98184
@@ -229,13 +229,37 @@ Após o envio do arquivo, o app gera uma tabela com:
 
 Também é possível baixar o resultado em um novo arquivo CSV.
 
-## 15. Como executar o projeto localmente
+## 15. Configuração da API NASA FIRMS
+
+Este projeto utiliza a API NASA FIRMS para a coleta dos dados de focos de calor associados a queimadas.
+
+Por segurança, a chave da API **não é enviada ao GitHub**. O arquivo `.env` está listado no `.gitignore` para evitar o envio de credenciais ao repositório.
+
+A aplicação Streamlit **não precisa da chave da API para funcionar**, pois utiliza o modelo já treinado salvo na pasta `models/` e o dataset processado disponível na pasta `data/processed/`.
+
+A chave da API só é necessária caso o usuário deseje executar novamente a etapa de coleta dos dados brutos.
+
+Para configurar a chave localmente, crie um arquivo chamado `.env` na raiz do projeto com o seguinte conteúdo:
+
+```env
+FIRMS_MAP_KEY=SUA_CHAVE_DA_NASA_FIRMS
+```
+
+Depois disso, a coleta de dados pode ser executada com:
+
+```bash
+python src/testar_firms.py
+```
+
+Caso o objetivo seja apenas executar a aplicação, não é necessário configurar a API. Basta instalar as dependências e rodar o Streamlit.
+
+## 16. Como executar o projeto localmente
 
 Clone o repositório:
 
 ```bash
-git clone LINK_DO_REPOSITORIO
-cd NOME_DA_PASTA_DO_PROJETO
+git clone https://github.com/lucca0100/GS---AI-Detector-de-Queimadas.git
+cd GS---AI-Detector-de-Queimadas
 ```
 
 Crie o ambiente virtual:
@@ -282,7 +306,25 @@ Acesse no navegador:
 http://localhost:8501
 ```
 
-## 16. Estrutura do projeto
+Observação: para usar a aplicação localmente, não é necessário configurar a chave da API NASA FIRMS. A chave só é necessária para executar novamente a coleta dos dados brutos.
+
+## 17. Como reproduzir o pipeline completo
+
+Caso o usuário deseje reproduzir todo o pipeline, desde a coleta até a interpretabilidade, a ordem recomendada de execução é:
+
+```bash
+python src/testar_firms.py
+python src/gerar_normais.py
+python src/montar_dataset.py
+python src/treinar_modelos.py
+python src/interpretabilidade_shap.py
+```
+
+A etapa `src/testar_firms.py` exige que o arquivo `.env` esteja configurado com a variável `FIRMS_MAP_KEY`.
+
+As demais etapas utilizam os arquivos gerados no projeto, como o dataset processado, modelos salvos e relatórios de avaliação.
+
+## 18. Estrutura do projeto
 
 ```text
 .
@@ -312,13 +354,13 @@ http://localhost:8501
 └── .gitignore
 ```
 
-## 17. Limitações
+## 19. Limitações
 
 Este projeto possui finalidade acadêmica e demonstrativa. A aplicação não substitui sistemas oficiais de monitoramento ambiental, defesa civil ou análise especializada.
 
 Como as amostras normais foram geradas artificialmente e tiveram variáveis térmicas preenchidas com zero, os modelos conseguiram separar as classes com desempenho muito alto. Isso indica que o problema, na forma atual, é fortemente separável. Em uma aplicação operacional real, seria necessário validar a classe normal contra bases oficiais e incluir amostras mais difíceis, como regiões com calor urbano, solo exposto ou atividades industriais.
 
-## 18. Trabalhos futuros
+## 20. Trabalhos futuros
 
 Como melhorias futuras, podem ser consideradas as seguintes evoluções:
 
@@ -329,7 +371,7 @@ Como melhorias futuras, podem ser consideradas as seguintes evoluções:
 - Criar mapas interativos para visualização espacial dos focos de queimada.
 - Incluir dados históricos de diferentes períodos do ano e diferentes regiões.
 
-## 19. Links
+## 21. Links
 
 - Link do repositório: https://github.com/lucca0100/GS---AI-Detector-de-Queimadas.git
 - Link da aplicação em funcionamento: https://gs---ai-detector-de-queimadas-bnltm8t9exqfkzgzacmyhz.streamlit.app/
