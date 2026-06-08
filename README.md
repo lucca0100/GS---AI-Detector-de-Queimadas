@@ -325,5 +325,5 @@ Como melhorias futuras, podem ser consideradas as seguintes evoluções:
 
 ## 19. Links
 
-- Link do repositório: adicionar aqui
-- Link da aplicação em funcionamento: adicionar aqui
+- Link do repositório: https://github.com/lucca0100/GS---AI-Detector-de-Queimadas.git
+- Link da aplicação em funcionamento: https://gs---ai-detector-de-queimadas-bnltm8t9exqfkzgzacmyhz.streamlit.app/
